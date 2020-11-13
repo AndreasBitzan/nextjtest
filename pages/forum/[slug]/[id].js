@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import {useRouter}from"next/router";
+import Error from "next/error";
 
 //Welche Pfade prerendered werden können
 export const getStaticPaths=async ()=>{
@@ -14,7 +16,7 @@ export const getStaticPaths=async ()=>{
 
     return {
         paths,
-        fallback: false, 
+        fallback: true, 
       };
 };
 
@@ -31,6 +33,12 @@ export const getStaticProps = async ({params}) => {
 };
 
 function UserView({ user }) {
+    const {isFallback} = useRouter();
+
+    if(isFallback){
+        return <Error statusCode={404} title="User could not be found" />
+    } 
+    
     return (
       <>
          <h1>{user.attributes.name}</h1>

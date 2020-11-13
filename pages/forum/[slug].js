@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import {useRouter}from"next/router";
+import Error from "next/error";
 
 //Welche Pfade prerendered werden können
 export const getStaticPaths=async ()=>{
@@ -7,7 +9,7 @@ export const getStaticPaths=async ()=>{
         paths: [
          { params: { slug: 'neuigkeiten' } }
         ],
-        fallback: false, 
+        fallback: true, 
       };
 };
 
@@ -27,6 +29,12 @@ export const getStaticProps = async ({params}) => {
 
 
 function Subforum({ users, slug }) {
+    const {isFallback} = useRouter();
+
+    if(isFallback){
+        return <Error statusCode={404} title="URL could not be found" />
+    } 
+
   return (
     <>
         <ul>
