@@ -42,6 +42,7 @@ function Subforum({ users, slug }) {
                 return <li key={user.id}><Link href={`${slug}/${user.id}`}>{user.attributes.name}</Link></li>
             })}
         </ul>
+        <Link href="/">Back to Index</Link>
     </>
   );
 }

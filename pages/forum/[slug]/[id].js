@@ -24,15 +24,17 @@ export const getStaticProps = async ({params}) => {
   const res = await fetch(`https://iou-andreas.herokuapp.com/api/v1/users/${params.id}`);
   const userData = await res.json();
   const user = userData.data;
+  const slug=params.slug;
   return {
     props: {
       user,
+      slug
     },
     revalidate: 1,
   };
 };
 
-function UserView({ user }) {
+function UserView({ user,slug }) {
     const {isFallback} = useRouter();
 
     if(isFallback){
@@ -43,7 +45,9 @@ function UserView({ user }) {
       <>
          <h1>{user.attributes.name}</h1>
          <h2>{user.attributes.email}</h2>
+         <Link href={`/forum/neuigkeiten`}>Back to Slug</Link>
       </>
+   
     );
   }
   
