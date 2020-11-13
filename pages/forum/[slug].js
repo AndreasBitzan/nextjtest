@@ -7,7 +7,7 @@ export const getStaticPaths=async ()=>{
         paths: [
          { params: { slug: 'neuigkeiten' } }
         ],
-        fallback: true, 
+        fallback: false, 
       };
 };
 
