@@ -47,9 +47,12 @@ export default function Create() {
 
   return (
     <>
-        <input onChange={(e)=>setUsername(e.target.value)}type="text" name="username" value={username}></input>
-        <input onChange={(e)=>setEmail(e.target.value)}type="email" name="email" value={email}></input>
-        <input onChange={(e)=>setPassword(e.target.value)} type="password" name="password" value={password}></input>
+      <p>Username</p>
+        <input onChange={(e)=>setUsername(e.target.value)}type="text" name="username" value={username}></input><br />
+        <p>email</p>
+        <input onChange={(e)=>setEmail(e.target.value)}type="email" name="email" value={email}></input><br />
+        <p>Password</p>
+        <input onChange={(e)=>setPassword(e.target.value)} type="password" name="password" value={password}></input><br />
         <button onClick={()=>submit()}>Absenden</button>
 
     </>
